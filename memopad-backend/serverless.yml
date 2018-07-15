@@ -1,4 +1,6 @@
-service: todo-api # NOTE: update this with your service name
+app: memopad
+tenant: holnet1026
+service: memopad-api # NOTE: update this with your service name
 
 # Add the serverless-webpack plugin
 plugins:
