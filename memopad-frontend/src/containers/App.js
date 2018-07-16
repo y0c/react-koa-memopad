@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { injectGlobal } from 'styled-components'
+import { withRouter } from 'react-router-dom';
 import Routes from './routes';
 import Loader from 'components/base/ui/Loader';
 
@@ -13,7 +14,6 @@ injectGlobal`
 class App extends Component {
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <header>
@@ -34,11 +34,11 @@ class App extends Component {
 }
 
 
-export default connect(
+export default withRouter(connect(
     state => ({
         loading : state.pender.pending['auth/LOCAL_LOGIN']
     }),
     dispatch => ({
 
     })
-)(App);
+)(App));
