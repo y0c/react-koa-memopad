@@ -1,29 +1,44 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { injectGlobal } from 'styled-components'
 import Routes from './routes';
+import Loader from 'components/base/ui/Loader';
 
+
+injectGlobal`
+    body {
+        padding-top:60px;
+    }
+`
 class App extends Component {
 
     render() {
+        console.log(this.props);
         return (
-            <BrowserRouter>
-                <div>
-                    <header>
-                        <div className="ui fixed inverted menu">
-                            <div className="ui container">
-                                <a href="#" className="header item">
-                                    Project Name
-                                </a>
-                            </div>
+            <div>
+                <header>
+                    <div className="ui fixed inverted menu">
+                        <div className="ui container">
+                            <a href="" className="header item">
+                                Project Name
+                            </a>
                         </div>
-                    </header>
-                   <Routes/> 
-                </div>
-            </BrowserRouter>
+                    </div>
+                </header>
+            <Routes/> 
+            <Loader loading={this.props.loading}/>
+            </div>
         )
     }
 
 }
 
 
-export default App;
+export default connect(
+    state => ({
+        loading : state.pender.pending['auth/LOCAL_LOGIN']
+    }),
+    dispatch => ({
+
+    })
+)(App);
