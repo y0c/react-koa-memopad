@@ -13,6 +13,7 @@ import {
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import * as auth from 'store/modules/auth';
+import * as user from 'store/modules/user';
 import storage from 'lib/storage';
 
 const StyledForm = styled.div`
@@ -24,11 +25,12 @@ const StyledForm = styled.div`
 class LoginPage extends Component {
 
     handleLogin = async e => {
-        const { AuthActions, form, history } = this.props;
+        const { AuthActions, UserActions, form, history } = this.props;
         
         try { 
             const { data : { accessToken} } = await AuthActions.localLogin(form);
             storage.set('accessToken', accessToken);
+            await UserActions.getMyInfo();
             history.push('/');
         } catch (e) {
             AuthActions.formChange({ email : '', password : '' });
@@ -116,6 +118,7 @@ export default withRouter(connect(
         loginResult : state.auth.loginResult
     }),
     (dispatch) => ({
-        AuthActions : bindActionCreators(auth, dispatch)
+        AuthActions : bindActionCreators(auth, dispatch),
+        UserActions : bindActionCreators(user, dispatch)
     })
 )(LoginPage));

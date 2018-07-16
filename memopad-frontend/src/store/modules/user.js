@@ -1,10 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
+import storage from 'lib/storage';
 import { UserApi } from 'lib/api'
 import { pender } from 'redux-pender';
 
 const GET_MY_INFO = 'user/GET_MY_INFO';
+const LOGOUT = 'user/LOGOUT';
 
 export const getMyInfo = createAction(GET_MY_INFO, UserApi.getMyInfo);
+export const logout = createAction(LOGOUT);
 
 const initialState = {
     info : {
@@ -15,6 +18,13 @@ const initialState = {
 }
 
 export default handleActions({
+    [LOGOUT] : function(state, action) {
+        storage.remove('accessToken');
+        return {
+            ...initialState,
+            loginStatus : 'NOT_LOGIN'
+        }
+    },
     ...pender({
         type: GET_MY_INFO,
         onSuccess(state, action) {
