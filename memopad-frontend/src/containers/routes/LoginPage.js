@@ -10,6 +10,7 @@ import {
     Message,
     Input
 } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import * as auth from 'store/modules/auth';
 import storage from 'lib/storage';
@@ -22,16 +23,17 @@ const StyledForm = styled.div`
 
 class LoginPage extends Component {
 
-    handleLogin = async () => {
-        const { AuthActions, form } = this.props;
+    handleLogin = async e => {
+        const { AuthActions, form, history } = this.props;
         
         try { 
             const { data : { accessToken} } = await AuthActions.localLogin(form);
             storage.set('accessToken', accessToken);
-            alert('로그인 되었습니다.');
+            history.push('/');
         } catch (e) {
             AuthActions.formChange({ email : '', password : '' });
         }
+        // e.preventDefault();
     }
     
     handleChange = e => {
@@ -95,7 +97,7 @@ class LoginPage extends Component {
                                         visible={error != ''}
                                         header={error}
                                     />
-                                    <Button type='submit' primary onClick={ this.handleLogin }>Submit</Button>
+                                    <Button type='submit' primary onClick={ e => this.handleLogin(e) }>Submit</Button>
                                 </Form>
                             </StyledForm>
                         </Grid.Column>
@@ -107,7 +109,7 @@ class LoginPage extends Component {
 }
 
 
-export default connect(
+export default withRouter(connect(
     (state) => ({
         form : state.auth.form,
         error : state.auth.error,
@@ -116,4 +118,4 @@ export default connect(
     (dispatch) => ({
         AuthActions : bindActionCreators(auth, dispatch)
     })
-)(LoginPage);
+)(LoginPage));
