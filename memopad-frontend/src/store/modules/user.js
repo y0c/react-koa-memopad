@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { UserApi } from 'lib/api'
-import pender from 'redux-pender';
+import { pender } from 'redux-pender';
 
 const GET_MY_INFO = 'user/GET_MY_INFO';
 
@@ -11,7 +11,7 @@ const initialState = {
         email : '',
         username : ''
     },
-    loginStatus : 'NOT_LOGIN'
+    loginStatus : ''
 }
 
 export default handleActions({
@@ -30,7 +30,8 @@ export default handleActions({
         },
         onFailure(state, action) {
             return {
-                ...initialState
+                ...initialState,
+                loginStatus : 'NOT_LOGIN'
             };
         }
     })
