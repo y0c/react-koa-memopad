@@ -13,6 +13,7 @@ const initialState = {
         email : '',
         password : ''
     },
+    error : '',
     loginResult : {}
 };
 
@@ -35,6 +36,12 @@ export default handleActions({
                 ...state,
                 loginResult
             };
+        },
+        onFailure(state, action) {
+            return {
+                ...state,
+                error : action.payload.response.data.message
+            }
         }
     })
 },initialState);

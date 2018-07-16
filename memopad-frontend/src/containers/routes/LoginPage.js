@@ -7,6 +7,7 @@ import {
     Header, 
     Icon, 
     Button, 
+    Message,
     Input
 } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -29,7 +30,7 @@ class LoginPage extends Component {
             storage.set('accessToken', accessToken);
             alert('로그인 되었습니다.');
         } catch (e) {
-            throw e.message;
+            AuthActions.formChange({ email : '', password : '' });
         }
     }
     
@@ -44,6 +45,14 @@ class LoginPage extends Component {
     }
 
     render() {
+        const { 
+            form : { 
+                email,
+                password
+            },
+            error
+        } = this.props;
+
         return (
             <div>
                 <Grid>
@@ -66,6 +75,7 @@ class LoginPage extends Component {
                                             iconPosition='left' 
                                             placeholder="Input e-mail address"
                                             onChange={ e => this.handleChange(e) }
+                                            value={email}
                                         />
                                     </Form.Field>
                                     <Form.Field>
@@ -77,8 +87,14 @@ class LoginPage extends Component {
                                             iconPosition='left' 
                                             placeholder="Input password"
                                             onChange={ e => this.handleChange(e) }
+                                            value={password}
                                         />
                                     </Form.Field>
+                                    <Message
+                                        error
+                                        visible={error != ''}
+                                        header={error}
+                                    />
                                     <Button type='submit' primary onClick={ this.handleLogin }>Submit</Button>
                                 </Form>
                             </StyledForm>
@@ -94,6 +110,7 @@ class LoginPage extends Component {
 export default connect(
     (state) => ({
         form : state.auth.form,
+        error : state.auth.error,
         loginResult : state.auth.loginResult
     }),
     (dispatch) => ({
