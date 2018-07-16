@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { injectGlobal } from 'styled-components'
 import { Link, withRouter } from 'react-router-dom';
+import Header from 'components/base/header';
 import storage from 'lib/storage';
 import Routes from './routes';
 import Loader from 'components/base/ui/Loader';
@@ -25,6 +26,8 @@ class App extends Component {
         try {
             if( accessToken ) {
                 await UserActions.getMyInfo();
+            } else {
+                UserActions.logout();
             }
         } catch(e){
 
@@ -50,32 +53,9 @@ class App extends Component {
         
         return (
             <div>
-                <header>
-                    <Menu fixed='top' inverted color='blue'>
-                        <Container>
-                            <Menu.Item>
-                                <Link to='/'>
-                                    <Icon name='file'/>Memopad
-                                </Link>
-                            </Menu.Item>
-
-                            <Menu.Menu position='right'>
-                                <Menu.Item>
-                                    <Link to='/login'>
-                                        <Icon name='lock'/>Login
-                                    </Link>
-                                </Menu.Item>
-                                <Menu.Item>
-                                    <Link to='/register'>
-                                        <Icon name='signup'/>Signup
-                                    </Link>
-                                </Menu.Item>
-                            </Menu.Menu>
-                        </Container>
-                    </Menu>
-                </header>
-            {renderComponent}
-            <Loader loading={ this.isLoading() }/>
+                <Header user={this.props.user}/>
+                {renderComponent}
+                <Loader loading={ this.isLoading() }/>
             </div>
         )
     }
@@ -86,7 +66,8 @@ class App extends Component {
 export default withRouter(connect(
     state => ({
         pending: state.pender.pending,
-        loginStatus: state.user.loginStatus
+        loginStatus: state.user.loginStatus,
+        user: state.user.info
     }),
     dispatch => ({
         UserActions : bindActionCreators(user, dispatch)
