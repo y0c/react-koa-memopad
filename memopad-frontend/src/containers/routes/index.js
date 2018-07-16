@@ -6,6 +6,7 @@ import PrivateRoute from 'components/hoc/PrivateRoute';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import MainPage from './MainPage';
+import LogoutPage from './LogoutPage';
 
 class Routes extends Component {
     render(){
@@ -20,6 +21,7 @@ class Routes extends Component {
                     />
                     <Route path='/login' component={LoginPage} /> 
                     <Route path='/signup' component={SignupPage} /> 
+                    <Route path='/logout' component={LogoutPage} />
                 </Switch>
             </Container>
         )
