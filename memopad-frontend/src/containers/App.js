@@ -4,10 +4,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { injectGlobal } from 'styled-components'
 import { Link, withRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Header from 'components/base/header';
+import Footer from 'components/base/footer';
 import storage from 'lib/storage';
 import Routes from './routes';
-import Loader from 'components/base/ui/Loader';
+import { Loader } from 'components/base/ui';
 import * as user from 'store/modules/user';
 
 
@@ -53,8 +55,12 @@ class App extends Component {
         
         return (
             <div>
+                <Helmet>
+                    <title>Memopad</title>
+                </Helmet>
                 <Header user={this.props.user}/>
                 {renderComponent}
+                <Footer/>
                 <Loader loading={ this.isLoading() }/>
             </div>
         )
