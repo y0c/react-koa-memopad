@@ -1,20 +1,16 @@
 import React from 'react';
 import { Menu, Container, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const Header = ({user}) => {
     let menu = (
         <Menu.Menu position='right'>
-            <Menu.Item>
-                <Link to='/login'>
-                    <Icon name='lock'/>Login
-                </Link>
+            <Menu.Item as={NavLink} exact to='/login'>
+                <Icon name='lock'/>Login
             </Menu.Item>
-            <Menu.Item>
-                <Link to='/register'>
-                    <Icon name='signup'/>Signup
-                </Link>
+            <Menu.Item as={NavLink} exact to='/signup'>
+                <Icon name='signup'/>Signup
             </Menu.Item>
         </Menu.Menu>
     );
@@ -22,15 +18,11 @@ const Header = ({user}) => {
     if( user.email ){
         menu = (
             <Menu.Menu position='right'>
-                <Menu.Item>
-                    <Link to='/'>
-                        <Icon name='user'/>{user.username}
-                    </Link>
+                <Menu.Item as={NavLink} exact to='/my'>
+                    <Icon name='user'/>{user.username}
                 </Menu.Item>
-                <Menu.Item>
-                    <Link to='/logout'>
-                        <Icon name='sign out alternate'/>Logout
-                    </Link>
+                <Menu.Item as={NavLink} exact to='/logout'>
+                    <Icon name='sign out alternate'/>Logout
                 </Menu.Item>
             </Menu.Menu>
         )
@@ -39,12 +31,9 @@ const Header = ({user}) => {
         <header>
             <Menu fixed='top' inverted color='blue'>
                 <Container>
-                    <Menu.Item>
-                        <Link to='/'>
-                            <Icon name='file'/>Memopad
-                        </Link>
+                    <Menu.Item as={NavLink}  exact to='/'>
+                        <Icon name='file'/>Memopad
                     </Menu.Item>
-
                     {menu}
                 </Container>
             </Menu>
