@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { 
-    Grid, 
-    Form, 
-    Header, 
-    Icon, 
-    Button, 
-    Message,
-    Input
-} from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
+import { StyledForm } from 'components/base/ui';
+import { LoginForm } from 'components/LoginPage';
 import styled from 'styled-components';
 import * as auth from 'store/modules/auth';
 import * as user from 'store/modules/user';
 import storage from 'lib/storage';
 
-const StyledForm = styled.div`
-    padding: 20px;
-    border-radius:3px;
-    border: 1px solid #ddd;
+const CenteredRow = styled(Grid.Row)`
+    &&& {
+        margin-top:50px;
+    }
 `
 
+
 class LoginPage extends Component {
+
+    componentWillMount() {
+        const { AuthActions, UserActions } = this.props;
+        AuthActions.init();
+        UserActions.logout();
+    }
 
     handleLogin = async e => {
         const { AuthActions, UserActions, form, history } = this.props;
         
         try { 
-            const { data : { accessToken} } = await AuthActions.localLogin(form);
+            const { data : { accessToken} } = await AuthActions.localLogin({
+                email : form.email,
+                password : form.password
+            });
             storage.set('accessToken', accessToken);
             await UserActions.getMyInfo();
             history.push('/');
@@ -60,50 +64,19 @@ class LoginPage extends Component {
         return (
             <div>
                 <Grid>
-                    <Grid.Row centered>
+                    <CenteredRow centered>
                         <Grid.Column computer={8} tablet={10} mobile={16} >
                             <StyledForm>
-                                <Form>
-                                    <Header as='h3' textAlign='center'>
-                                        <Icon
-                                            name='user' 
-                                            size='tiny'
-                                        />
-                                        Login
-                                    </Header>          
-                                    <Form.Field>
-                                        <label>Email</label>
-                                        <Input
-                                            icon='mail' 
-                                            name='email'
-                                            iconPosition='left' 
-                                            placeholder="Input e-mail address"
-                                            onChange={ e => this.handleChange(e) }
-                                            value={email}
-                                        />
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <label>Password</label>
-                                        <Input 
-                                            type='password' 
-                                            name='password'
-                                            icon='lock' 
-                                            iconPosition='left' 
-                                            placeholder="Input password"
-                                            onChange={ e => this.handleChange(e) }
-                                            value={password}
-                                        />
-                                    </Form.Field>
-                                    <Message
-                                        error
-                                        visible={error != ''}
-                                        header={error}
-                                    />
-                                    <Button type='submit' primary onClick={ e => this.handleLogin(e) }>Submit</Button>
-                                </Form>
+                                <LoginForm
+                                    onChange={ e => this.handleChange(e) }
+                                    onLogin={ e => this.handleLogin(e) }
+                                    error={error}
+                                    email={email}
+                                    password={password}
+                                />
                             </StyledForm>
                         </Grid.Column>
-                    </Grid.Row>
+                    </CenteredRow>
                 </Grid>
             </div>
         )
