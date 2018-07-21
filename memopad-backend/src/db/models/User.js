@@ -28,7 +28,9 @@ const User = new Schema({
 });
 
 const encryptPassword = password => {
-    return crypto.createHmac('sha256', config.hashSecret).update(password).digest('hex');
+    return crypto.createHmac('sha256', config.hashSecret)
+                 .update(password)
+                 .digest('hex');
 };
 
 User.statics.localSignup = function({
@@ -44,6 +46,27 @@ User.statics.localSignup = function({
     
     return user.save();
 };
+
+User.statics.socialSignup = function({
+    email,
+    provider,
+    accessToken,
+    username,
+    socialId
+}) {
+    let user = new this({
+        email,
+        username,
+        social: {
+            [provider]: {
+                id: socialId,
+                accessToken: accessToken
+            }
+        }
+    });
+
+    return user.save();
+}
 
 User.statics.findByEmail = function(email) {
     return this.findOne({email}).exec();
