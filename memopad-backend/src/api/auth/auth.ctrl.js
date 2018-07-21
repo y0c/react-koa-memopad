@@ -97,3 +97,62 @@ export const login = async ctx => {
     }
 };
 
+
+export const socialLogin = async ctx => {
+    const {
+        accessToken,
+        username,
+        provider,
+        socialId,
+        email
+    } = ctx.request.body;
+
+    try{
+        let schema = Joi.object().keys({
+            accessToken: Joi.string().required(),
+            username: Joi.string().max(20).required(),
+            provider: Joi.string().required(),
+            email: Joi.string().email().required(),
+            socialId: Joi.string().required()
+        });
+
+        const param = {
+            accessToken,
+            username,
+            provider,
+            socialId,
+            email
+        };
+
+        let validateResult = schema.validate(param);
+
+        if( validateResult.error != null ) {
+            ctx.status = 422;
+            ctx.body = { 
+                type : "ValidateError",
+                message : validateResult.error.details[0].message 
+            };
+            return;
+        }
+
+        let user = await User.findByEmail(email);
+
+        //register
+        if(!user) {
+            user = await User.socialSignup(param);
+        }
+
+        
+        let token = jwt.sign({ email : user.email }, config.jwtSecret, { expiresIn : '1h'});
+        let refreshToken = jwt.sign({ email : user.email }, config.jwtSecret, { expiresIn : '7d'});
+
+        ctx.body = {
+            accessToken: token,
+            refreshToken
+        };
+
+        
+    } catch(e) {
+        ctx.throw(e, 500);
+    }
+}
