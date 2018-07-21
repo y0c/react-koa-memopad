@@ -13,7 +13,9 @@ const LoginForm = ({
     password, 
     error, 
     onChange, 
-    onLogin
+    onLogin,
+    facebookLogin,
+    googleLogin
 }) => {
     return (
         <Form onSubmit={onLogin}>
@@ -58,12 +60,12 @@ const LoginForm = ({
                     </Button>
                 </Form.Field>
                 <Form.Field>
-                    <Button color='facebook' fluid>
+                    <Button type='button' color='facebook' fluid onClick={facebookLogin}>
                         <Icon name='facebook' /> Facebook으로 로그인
                     </Button>
                 </Form.Field>
                 <Form.Field>
-                    <Button color='google plus' fluid>
+                    <Button type='button' color='google plus' fluid onClick={googleLogin}>
                         <Icon name='google plus' /> Google으로 로그인
                     </Button>
                 </Form.Field>

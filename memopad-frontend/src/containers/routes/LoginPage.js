@@ -5,10 +5,12 @@ import { Grid } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { StyledForm } from 'components/base/ui';
 import { LoginForm } from 'components/LoginPage';
+import socialProvider, { FacebookStretegy } from 'lib/social';
 import styled from 'styled-components';
 import * as auth from 'store/modules/auth';
 import * as user from 'store/modules/user';
 import storage from 'lib/storage';
+import { GoogleStretegy } from '../../lib/social';
 
 const CenteredRow = styled(Grid.Row)`
     &&& {
@@ -17,12 +19,63 @@ const CenteredRow = styled(Grid.Row)`
 `
 
 
+const facebookStretegy = new FacebookStretegy();
+const googleStretegy = new GoogleStretegy();
+
+
 class LoginPage extends Component {
 
     componentWillMount() {
         const { AuthActions, UserActions } = this.props;
         AuthActions.init();
         UserActions.logout();
+    }
+
+    facebookLogin = async () => {
+        const { AuthActions, UserActions, history } = this.props;
+        try {
+            socialProvider.setStretegy(facebookStretegy);
+            const { access_token } = await socialProvider.login();
+            const { email, name, id, thumbnail } = await socialProvider.me();
+            
+            const { data: { accessToken }} = await AuthActions.socialSignup({
+                accessToken : access_token,
+                email,
+                username : name,
+                provider : 'facebook',
+                socialId : id 
+            });
+
+            storage.set('accessToken', accessToken);
+            await UserActions.getMyInfo();
+            history.push('/');
+            
+        } catch (e) {
+            AuthActions.formChange({ email : '', password : ''});
+        }
+    }
+
+    googleLogin = async () => {
+        const { AuthActions, UserActions, history } = this.props;
+        try {
+            socialProvider.setStretegy(googleStretegy);
+            const { access_token } = await socialProvider.login();
+            const { email, displayName, id } = await socialProvider.me();
+
+            const { data: { accessToken }} = await AuthActions.socialSignup({
+                accessToken : access_token,
+                email,
+                username : displayName,
+                provider : 'facebook',
+                socialId : id 
+            });
+
+            storage.set('accessToken', accessToken);
+            await UserActions.getMyInfo();
+            history.push('/');
+        } catch(e) {
+            AuthActions.formChange({ email : '', password : ''});
+        }
     }
 
     handleLogin = async e => {
@@ -70,6 +123,8 @@ class LoginPage extends Component {
                                 <LoginForm
                                     onChange={ e => this.handleChange(e) }
                                     onLogin={ e => this.handleLogin(e) }
+                                    facebookLogin={this.facebookLogin}
+                                    googleLogin={this.googleLogin}
                                     error={error}
                                     email={email}
                                     password={password}
