@@ -7,12 +7,16 @@ import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import MainPage from './MainPage';
 import LogoutPage from './LogoutPage';
-import { PostFormPage } from './post';
+import { PostFormPage, PostViewPage } from './post';
+import styled from 'styled-components';
 
+const MainContainer = styled(Container)`
+    min-height: calc(100vh - 134px)
+` 
 class Routes extends Component {
     render(){
         return (
-            <Container>
+            <MainContainer>
                 <Switch>
                     <PrivateRoute 
                         exact 
@@ -20,12 +24,13 @@ class Routes extends Component {
                         component={MainPage} 
                         user={this.props.user}
                     />
-                    <Route path='/login' component={LoginPage} /> 
-                    <Route path='/signup' component={SignupPage} /> 
-                    <Route path='/logout' component={LogoutPage} />
-                    <Route paht='/post/form' component={PostFormPage} />
+                    <Route exact path='/login' component={LoginPage} /> 
+                    <Route exact path='/signup' component={SignupPage} /> 
+                    <Route exact path='/logout' component={LogoutPage} />
+                    <Route exact path='/post/form' component={PostFormPage} />
+                    <Route exact path='/post/:id' component={PostViewPage} />
                 </Switch>
-            </Container>
+            </MainContainer>
         )
     }
 }
