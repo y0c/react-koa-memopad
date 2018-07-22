@@ -1,9 +1,9 @@
 import Router from 'koa-router';
 import * as postCtrl from './post.ctrl';
-import authCheck from 'lib/middleware/authCheck';
 const router = new Router();
 
-router.get('/', authCheck(), postCtrl.getPosts);
-router.post('/', authCheck(), postCtrl.addPost);
+router.get('/',  postCtrl.getPosts);
+router.post('/',  postCtrl.addPost);
+router.get('/:id', postCtrl.findPost);
 
 export default router;
