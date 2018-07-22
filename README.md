@@ -1,6 +1,7 @@
 # Memopad
 
 A Simple Markdown memopad built with koa & react
+
 This project was developed for personal learning purposes.
 
 ## Feature
@@ -32,6 +33,5 @@ This project was developed for personal learning purposes.
 
 ## TODO
 * [ ]  Share markdown post via public url
-* [ ]  
 
 
