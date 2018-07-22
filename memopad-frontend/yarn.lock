@@ -1506,6 +1506,10 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+codemirror@^5.33.0:
+  version "5.39.2"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.39.2.tgz#778aa13b55ebf280745c309cb1b148e3fc06f698"
+
 collection-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/collection-visit/-/collection-visit-1.0.0.tgz#4bc0373c164bc3291b4d368c829cf1a80a59dca0"
@@ -2484,6 +2488,10 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
+"eve@git://github.com/adobe-webplatform/eve.git#eef80ed":
+  version "0.4.1"
+  resolved "git://github.com/adobe-webplatform/eve.git#eef80ed8d188423c2272746fb8ae5cc8dad84cb1"
+
 event-emitter@~0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/event-emitter/-/event-emitter-0.3.5.tgz#df8c69eef1647923c7157b9ce83840610b02cc39"
@@ -3163,6 +3171,10 @@ he@1.1.x:
 hellojs@^1.16.1:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/hellojs/-/hellojs-1.16.1.tgz#acea19ef62cfafc59517b379bf0f8d9d3f439bd4"
+
+highlight.js@^9.12.0:
+  version "9.12.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
 
 history@^4.7.2:
   version "4.7.2"
@@ -4025,6 +4037,10 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
+jquery@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+
 js-base64@^2.1.9:
   version "2.4.6"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.6.tgz#1d49f618bef43630cd191f4e122447acfdb947d8"
@@ -4217,6 +4233,12 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+linkify-it@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.0.3.tgz#d94a4648f9b1c179d64fa97291268bdb6ce9434f"
+  dependencies:
+    uc.micro "^1.0.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -4382,6 +4404,16 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it@^8.4.0:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.5"
+
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
@@ -4396,6 +4428,10 @@ md5.js@^1.3.4:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+mdurl@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4954,6 +4990,10 @@ package-json@^4.0.0:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
+pako@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.3.tgz#5f515b0c6722e1982920ae8005eacb0b7ca73ccf"
+
 pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
@@ -5110,6 +5150,13 @@ pkg-dir@^2.0.0:
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
   dependencies:
     find-up "^2.1.0"
+
+plantuml-encoder@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/plantuml-encoder/-/plantuml-encoder-1.2.5.tgz#6b8e5b9e1a1dbd88b3fd9fb46f734eec7d44b548"
+  dependencies:
+    pako "1.0.3"
+    utf8-bytes "0.0.1"
 
 pluralize@^7.0.0:
   version "7.0.0"
@@ -5586,6 +5633,12 @@ range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
+"raphael@https://github.com/nhnent/raphael.git#2.2.0-c":
+  version "2.2.0-c"
+  resolved "https://github.com/nhnent/raphael.git#78a6ed3ec269f33b6457b0ec66f8c3d1f2ed70e0"
+  dependencies:
+    eve "git://github.com/adobe-webplatform/eve.git#eef80ed"
+
 raw-body@2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.3.2.tgz#bcd60c77d3eb93cde0050295c3f379389bc88f89"
@@ -5693,6 +5746,10 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-tagsinput@^3.19.0:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/react-tagsinput/-/react-tagsinput-3.19.0.tgz#6e3b45595f2d295d4657bf194491988f948caabf"
 
 react@^16.4.1:
   version "16.4.1"
@@ -5908,6 +5965,10 @@ relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
 
+remove-markdown@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/remove-markdown/-/remove-markdown-0.3.0.tgz#5e4b667493a93579728f3d52ecc1db9ca505dc98"
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
@@ -5983,6 +6044,10 @@ require-uncached@^1.0.3:
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+resize-observer-polyfill@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -6419,6 +6484,10 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
+"squire-rte@github:neilj/Squire#306230d0df9b38047cd06204476ddc0582569cfd":
+  version "1.8.10"
+  resolved "https://codeload.github.com/neilj/Squire/tar.gz/306230d0df9b38047cd06204476ddc0582569cfd"
+
 sshpk@^1.7.0:
   version "1.14.2"
   resolved "https://registry.yarnpkg.com/sshpk/-/sshpk-1.14.2.tgz#c6fc61648a3d9c4e764fd3fcdf4ea105e492ba98"
@@ -6730,6 +6799,10 @@ to-fast-properties@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
 
+to-mark@^1.1.2:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/to-mark/-/to-mark-1.1.3.tgz#d421a170a2dd582025e5090256c7821c6703f346"
+
 to-object-path@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/to-object-path/-/to-object-path-0.3.0.tgz#297588b7b0e7e0ac08e04e672f85c1f4999e17af"
@@ -6785,6 +6858,39 @@ tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
 
+tui-chart@^3.0.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/tui-chart/-/tui-chart-3.2.1.tgz#07e8e272b974bff633906c7d997f7af32e0edea0"
+  dependencies:
+    raphael "https://github.com/nhnent/raphael.git#2.2.0-c"
+    tui-code-snippet "^1.3.0"
+
+tui-code-snippet@^1.3.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tui-code-snippet/-/tui-code-snippet-1.4.0.tgz#b09bb8e621e382af23024363d5763f9be44412b4"
+
+tui-color-picker@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tui-color-picker/-/tui-color-picker-2.2.0.tgz#452b89a25f3f3d9f47dae73c166435dd3539bc4f"
+  dependencies:
+    tui-code-snippet "^1.3.0"
+
+tui-editor@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/tui-editor/-/tui-editor-1.2.6.tgz#3a7fb374b5e7907ed6d0a1eddd43e5da197c4576"
+  dependencies:
+    codemirror "^5.33.0"
+    highlight.js "^9.12.0"
+    jquery "^3.3.1"
+    markdown-it "^8.4.0"
+    plantuml-encoder "^1.2.5"
+    resize-observer-polyfill "^1.5.0"
+    squire-rte "github:neilj/Squire#306230d0df9b38047cd06204476ddc0582569cfd"
+    to-mark "^1.1.2"
+    tui-chart "^3.0.1"
+    tui-code-snippet "^1.3.0"
+    tui-color-picker "^2.2.0"
+
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -6815,6 +6921,10 @@ typedarray@^0.0.6:
 ua-parser-js@^0.7.18:
   version "0.7.18"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
+
+uc.micro@^1.0.1, uc.micro@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.5.tgz#0c65f15f815aa08b560a61ce8b4db7ffc3f45376"
 
 uglify-js@3.4.x, uglify-js@^3.0.13:
   version "3.4.4"
@@ -6954,6 +7064,10 @@ url@^0.11.0:
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
+
+utf8-bytes@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/utf8-bytes/-/utf8-bytes-0.0.1.tgz#116b025448c9b500081cdfbf1f4d6c6c37d8837d"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
