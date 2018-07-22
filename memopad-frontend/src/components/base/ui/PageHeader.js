@@ -8,7 +8,9 @@ const PageHeader = ({
     className
 }) => (
     <Header as='h3' className={className}>
-        <Icon name={icon} />
+        { icon ? 
+            <Icon name={icon} /> : null
+        }
         <Header.Content>{title}</Header.Content>
     </Header>
 )
