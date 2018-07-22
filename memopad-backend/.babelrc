@@ -1,7 +1,8 @@
-{
-    "plugins": [
-      ["module-resolver", {
-        "root": ["./src"]
-      }]
-    ]
-  }
+ {
+  "plugins": [
+    ["transform-object-rest-spread"],
+    ["module-resolver", {
+      "root": ["./src"]
+    }]
+  ]
+}
