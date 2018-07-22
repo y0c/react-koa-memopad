@@ -64,5 +64,12 @@ export const removePost = async ctx => {
 }
 
 export const findPost = async ctx => {
+    const { id } = ctx.params;
+    try {
+        const post = await Post.selectPostById({ _id : id });
 
+        ctx.body = { post };
+    } catch(e) {
+        ctx.throw(e,500);
+    }
 }

@@ -30,6 +30,12 @@ Post.virtual('plainContent').get(function(){
     return removeMarkdown(this.content).substring(0,500);
 })
 
+Post.statics.selectPostById = function({
+    _id
+}) {
+    return this.findOne({ _id })
+                .exec();
+}
 
 Post.statics.selectPostByWriter = function({
     writer
